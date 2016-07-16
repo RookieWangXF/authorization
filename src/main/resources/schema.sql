@@ -1,0 +1,54 @@
+-- 数据库初始化脚本
+-- mysql版本为5.6以上的
+
+-- 创建数据库
+CREATE DATABASE auth;
+
+-- 使用数据库
+use seckill;
+
+--
+CREATE TABLE auth_function(
+  id BIGINT(20) NOT NULL AUTO_INCREMENT,
+  name VARCHAR(64) NOT NULL,
+  parent_id BIGINT(20)  NOT NULL ,
+  url VARCHAR(128),
+  serial_num INT(11),
+  accordion INT(11),
+  PRIMARY KEY (id)
+ )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+CREATE TABLE auth_role(
+  id BIGINT(20) NOT NULL AUTO_INCREMENT,
+  name VARCHAR(64) NOT NULL,
+  PRIMARY KEY (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+CREATE TABLE auth_role_function(
+  id BIGINT(20) NOT NULL AUTO_INCREMENT,
+  role_id BIGINT(20) NOT NULL,
+  function_id BIGINT(20) NOT NULL,
+  status INT(11) NOT NULL,
+  PRIMARY KEY (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE auth_user(
+  id BIGINT(20) NOT NULL AUTO_INCREMENT,
+  name VARCHAR(64) NOT NULL,
+  pwd VARCHAR(64) NOT NULL,
+  PRIMARY KEY (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+CREATE TABLE auth_user_role(
+  id BIGINT(20) NOT NULL AUTO_INCREMENT,
+  role_id BIGINT(20) NOT NULL,
+  user_id BIGINT(20) NOT NULL,
+  PRIMARY KEY (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+
